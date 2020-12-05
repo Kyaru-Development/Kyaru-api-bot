@@ -31,6 +31,7 @@ bot.on('message', async message => {
   let args = message.content.slice(config.prefix.length).trim().split(/ +/g);
   let  cmd = args.shift().toLowerCase();
    let commandfile = bot.commands.get(cmd);
+    if(!commandfile) return ;
   if(commandfile) commandfile.run(bot, message, args);
 });
 bot.login(config.token)
