@@ -1,3 +1,4 @@
+ 
 const {  MessageEmbed } = require("discord.js")
 module.exports.ok = (message,text) =>  {
     message.channel.send(new MessageEmbed()
@@ -5,4 +6,4 @@ module.exports.ok = (message,text) =>  {
     .setColor("GREEN")
     .setDescription(`**${message.author.username}**,${text}`)
     .setTimestamp())
-   }
+}

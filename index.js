@@ -2,9 +2,9 @@ const {Client,Collection} = require("discord.js")
 const bot = new Client()
 const mongoose = require('mongoose');
 const fs = require('fs')
-const config = require('./config.json')
+const {token,prefix,mongodbURL} = require('./config.json')
 bot.commands = new Collection()
-mongoose.connect(config.mongodbURL, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(mongodbURL, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.connection.on('err', err => {
      console.log(`[MONGODB] Errro ${err.stack}`);
 });
@@ -27,11 +27,11 @@ fs.readdir('./commands', (err, files) => {
 bot.on('message', async message => {
   if(message.author.bot) return;
   if(message.channel.type === "dm") return;
-  if(!message.content.startsWith(config.prefix)) return;
-  let args = message.content.slice(config.prefix.length).trim().split(/ +/g);
+  if(!message.content.startsWith(prefix)) return;
+  let args = message.content.slice(prefix.length).trim().split(/ +/g);
   let  cmd = args.shift().toLowerCase();
    let commandfile = bot.commands.get(cmd);
+   if(!commandfile) return
   if(commandfile) commandfile.run(bot, message, args);
 });
-bot.login(config.token)
- 
+bot.login(token)

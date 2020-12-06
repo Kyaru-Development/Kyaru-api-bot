@@ -1,5 +1,6 @@
+
 const { MessageEmbed } = require("discord.js")
-const User = require("../user");
+const User = require("../schemas/User");
 const { owners } = require('../config.json')
 
 module.exports.run = async (bot, message, args) => {

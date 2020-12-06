@@ -1,4 +1,4 @@
- const { owners } = require('../config.json')
+  const { owners } = require('../config.json')
  module.exports.run = async (bot, message, args) => {
     if(!owners.includes(message.author.id)) {
         require("../utils/error").error(message,'Вы не администратор')
@@ -72,3 +72,5 @@
          description: 'Выполнить код',
         category: 'Developer',
  }
+//eval by livixx
+ 

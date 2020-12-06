@@ -1,4 +1,5 @@
-const User = require("../user");
+ 
+const User = require("../schemas/User");
 const { owners } = require('../config.json')
 const {MessageEmbed} = require("discord.js");
 module.exports.run = async (bot, message, args) => {
@@ -49,4 +50,4 @@ module.exports.help = {
         name: "api",
          description: 'Команды для управлением апи',
         category: 'Developer',
- }
+}
